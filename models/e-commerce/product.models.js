@@ -17,6 +17,12 @@ const productSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        discountPercentage: {
+            type: Number,
+            default: 0,
+            min: 0,
+            max: 100
+        },
         stockRemaining:{
             type: Number,
             default: 0
@@ -26,8 +32,10 @@ const productSchema = new mongoose.Schema(
             ref: "Category",
             required: true
         },
-        
-
+        productOwner: {
+            type: mongoose.Schema.Type.ObjectId,
+            ref: "User"
+        }
     },
     { timestamps: true }
 )
